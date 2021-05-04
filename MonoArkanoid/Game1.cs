@@ -4,6 +4,13 @@ using Microsoft.Xna.Framework.Input;
 
 namespace MonoArkanoid
 {
+    enum ProgramStates
+    {
+        MAIN_MENU,
+        GAME_MENU,
+        GAME_PLAY,
+        EXIT
+    }
 
     public class MonoArkanoid : Game
     {
@@ -14,11 +21,11 @@ namespace MonoArkanoid
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            IsMouseVisible = true;
         }
 
         protected override void Initialize()
         {
-            
 
             base.Initialize();
         }
@@ -39,9 +46,8 @@ namespace MonoArkanoid
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
 
             base.Update(gameTime);
         }
